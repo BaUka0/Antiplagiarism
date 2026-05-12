@@ -28,7 +28,6 @@ def rank_matches(sim_matrix: np.ndarray,
 
     results = []
     for doc_id in df_corpus.index:
-        # Filter corpus chunks
         corpus_idx = chunks_meta.index[
             (chunks_meta['doc_idx'] == doc_id) &
             (chunks_meta['chunk_idx'] >= skip_intro)
@@ -60,7 +59,6 @@ def rank_matches(sim_matrix: np.ndarray,
             flat = sub.flatten()
             k = min(top_k, len(flat))
             top_idx = np.argpartition(flat, -k)[-k:]
-            # Sort the top k elements in descending order
             top_idx = top_idx[np.argsort(flat[top_idx])[::-1]]
             matches = []
             for idx in top_idx:

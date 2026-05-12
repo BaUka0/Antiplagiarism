@@ -51,7 +51,7 @@ class Chunk(Base):
     token_start: Mapped[int] = mapped_column(Integer)
     token_end: Mapped[int] = mapped_column(Integer)
     text_preview: Mapped[str] = mapped_column(String(1024))
-    embedding: Mapped[np.ndarray] = mapped_column(Vector(768)) # granite model has 768 dimensions
+    embedding: Mapped[np.ndarray] = mapped_column(Vector(768))
     created_at: Mapped[datetime.datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     document: Mapped["Document"] = relationship(back_populates="chunks")

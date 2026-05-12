@@ -11,7 +11,6 @@ def create_app() -> FastAPI:
         openapi_url=f"{settings.API_V1_STR}/openapi.json"
     )
 
-    # Set up CORS
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -20,10 +19,8 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Include API routes
     app.include_router(api_router, prefix=settings.API_V1_STR)
-    
-    # Root health check
+
     @app.get("/health", tags=["health"])
     async def root_health():
         return {

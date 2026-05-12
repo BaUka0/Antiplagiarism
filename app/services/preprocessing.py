@@ -2,7 +2,6 @@ import re
 import nltk
 from nltk.corpus import stopwords
 
-# Ensure stopwords are downloaded (or use a fallback)
 try:
     nltk.data.find('corpora/stopwords')
 except LookupError:
@@ -15,7 +14,6 @@ try:
         set(stopwords.words('kazakh'))
     )
 except OSError:
-    # If kazakh is missing from NLTK, fallback manually
     STOP = (
         set(stopwords.words('russian')) |
         set(stopwords.words('english'))

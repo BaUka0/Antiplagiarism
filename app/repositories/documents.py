@@ -48,7 +48,7 @@ class DocumentRepository:
                 chunk_idx=i,
                 token_start=chunk['token_start'],
                 token_end=chunk['token_end'],
-                text_preview=chunk.get('text_preview', ""), # We might want to pass preview here
+                text_preview=chunk.get('text_preview', ""),
                 embedding=emb
             )
             self.session.add(db_chunk)
